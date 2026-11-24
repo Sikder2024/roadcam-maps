@@ -24,6 +24,19 @@ Because RoadCam must not record in the background, recording is stopped and the 
 
 No map API key or RoadCam account is required. Wi-Fi or mobile data may be needed for Organic Maps to download maps; download the desired offline map in Organic Maps before driving if connectivity is unreliable.
 
+## Build an Android APK for device testing
+
+The `preview` EAS profile creates an installable APK for direct testing; it is not a Play Store release.
+
+1. Install Organic Maps on the test phone from [organicmaps.app](https://organicmaps.app/) and, if needed, download the area map while on Wi-Fi.
+2. Install EAS CLI with `npm install --global eas-cli`, then sign in using `eas login` or create an Expo account at [expo.dev](https://expo.dev/).
+3. From this repository, run `eas build:configure` if prompted, then start `eas build --platform android --profile preview`.
+4. Follow EAS prompts to create an Android app-signing key; keeping the generated key managed by EAS is suitable for a first test build.
+5. When the cloud build finishes, open its build page on the Android phone, download the APK, and approve installation if Android asks to allow installs from that browser.
+6. Launch RoadCam while parked, accept the audio/video notice, grant camera and microphone access, and verify a recording saves. Tap **Open Organic Maps**, grant location when asked, start voice navigation in Organic Maps, then use its return button or Android Back. RoadCam should remain stopped until you manually start it again.
+
+EAS cloud builds upload the project source to Expo's build service. For local builds instead, install Android Studio with the Android SDK and a compatible JDK, enable USB debugging on the Android phone, connect it, then use `npm run android`. This repository currently has no iOS native project; iPhone installation requires an EAS iOS device build or a Mac/Xcode build, plus Apple device provisioning for direct installation.
+
 ## Permissions and device test
 
 On first launch, review and accept the recording disclosure. Then allow camera and microphone access; recording does not begin unless both are granted. Location permission is requested only when opening Organic Maps. The app asks for media-library permission when saving its first video. If camera or microphone access is denied, use the on-screen retry control or enable access in system Settings.
