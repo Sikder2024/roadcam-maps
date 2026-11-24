@@ -4,6 +4,11 @@ module.exports = {
     slug: "roadcam-maps",
     version: "0.1.0",
     scheme: "roadcam",
+    extra: {
+      eas: {
+        projectId: "96abff10-b19d-4917-b316-e650b76c1065"
+      }
+    },
     orientation: "landscape",
     userInterfaceStyle: "dark",
     platforms: ["ios", "android"],
