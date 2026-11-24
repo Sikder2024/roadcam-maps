@@ -67,7 +67,7 @@ export default function App() {
   useEffect(() => {
     const subscription = AppState.addEventListener("change", (nextState: AppStateStatus) => {
       if (nextState !== "active") {
-        hasLeftForegroundRef.current = true;
+        if (nextState === "background") hasLeftForegroundRef.current = true;
         setForeground(false);
         if (recordingRef.current) cameraRef.current?.stopRecording();
       } else {
