@@ -30,10 +30,11 @@ The `preview` EAS profile creates an installable APK for direct testing; it is n
 
 1. Install Organic Maps on the test phone from [organicmaps.app](https://organicmaps.app/) and, if needed, download the area map while on Wi-Fi.
 2. Install EAS CLI with `npm install --global eas-cli`, then sign in using `eas login` or create an Expo account at [expo.dev](https://expo.dev/).
-3. From this repository, run `eas build:configure` if prompted, then start `eas build --platform android --profile preview`.
-4. Follow EAS prompts to create an Android app-signing key; keeping the generated key managed by EAS is suitable for a first test build.
-5. When the cloud build finishes, open its build page on the Android phone, download the APK, and approve installation if Android asks to allow installs from that browser.
-6. Launch RoadCam while parked, accept the audio/video notice, grant camera and microphone access, and verify a recording saves. Tap **Open Organic Maps**, grant location when asked, start voice navigation in Organic Maps, then use its return button or Android Back. RoadCam should remain stopped until you manually start it again.
+3. From this repository, run `eas build:configure` and follow the prompts to link/create the Expo project.
+4. Start `eas build --platform android --profile preview`.
+5. Follow EAS prompts to create an Android app-signing key; keeping the generated key managed by EAS is suitable for a first test build.
+6. When the cloud build finishes, open its build page on the Android phone, download the APK, and approve installation if Android asks to allow installs from that browser.
+7. Launch RoadCam while parked, accept the audio/video notice, grant camera and microphone access, and verify a recording saves. Tap **Open Organic Maps**, grant location when asked, start voice navigation in Organic Maps, then use its return button or Android Back. RoadCam should remain stopped until you manually start it again.
 
 EAS cloud builds upload the project source to Expo's build service. For local builds instead, install Android Studio with the Android SDK and a compatible JDK, enable USB debugging on the Android phone, connect it, then use `npm run android`. This repository currently has no iOS native project; iPhone installation requires an EAS iOS device build or a Mac/Xcode build, plus Apple device provisioning for direct installation.
 
